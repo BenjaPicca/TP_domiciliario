@@ -14,7 +14,7 @@ public class VolverAEscenaAnterior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if()
     }
     public void cambiarEscena()
     {
@@ -22,7 +22,6 @@ public class VolverAEscenaAnterior : MonoBehaviour
     }
     public void recargarEscena()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

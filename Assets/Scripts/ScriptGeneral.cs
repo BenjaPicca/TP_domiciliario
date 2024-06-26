@@ -15,6 +15,7 @@ public class ScriptGeneral : MonoBehaviour
     public Text txt_suma;
     int randomaSumar;
     int SumaPrecios;
+    int ObjetoSeleccionado;
 
     // Start is called before the first frame update
     void Start()
@@ -73,4 +74,5 @@ public class ScriptGeneral : MonoBehaviour
         objetoRandom.transform.position = new Vector3(x, y, z);
         objetoRandom.SetActive(true);
     }
+    
 }

@@ -18,6 +18,6 @@ public class CambiarEscena : MonoBehaviour
     }
     public void cambiarEscena()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("tp_domiciliario");
     }
 }
