@@ -14,7 +14,6 @@ public class VolverAEscenaAnterior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if()
     }
     public void cambiarEscena()
     {

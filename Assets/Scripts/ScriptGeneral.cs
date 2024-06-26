@@ -13,38 +13,52 @@ public class ScriptGeneral : MonoBehaviour
     public Text txt_precio2;
     public Text txt_precio3;
     public Text txt_suma;
+    public Text txt_btnVolverAJugar;
+    public Text txt_notificacion;
+    public GameObject panelCorrectooIncorrecto;
+    public GameObject panelSeleccionarAlgo;
     int randomaSumar;
     int SumaPrecios;
     int ObjetoSeleccionado;
+    int precioASumar;
+    int precio1;
+    int precio2;
+    int precio3;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        panelSeleccionarAlgo.SetActive(false);
+        panelCorrectooIncorrecto.SetActive(false);
         DeactivateAll();
         CrearPrecios();
         ActivarObjetoRandom(-6.4f, 3.31f, 0);
-        txt_precioASumar.text = precios[objetoRandom].ToString();
+        precioASumar = precios[objetoRandom];
+        txt_precioASumar.text = "$"+precioASumar.ToString();
         ActivarObjetoRandom(-6.5f, -2.1f, 0);
-        txt_precio1.text = precios[objetoRandom].ToString();
+        precio1 = precios[objetoRandom];
+        txt_precio1.text = "$" + precio1.ToString();
         ActivarObjetoRandom(-1.05f, -2.31f, 0);
-        txt_precio2.text = precios[objetoRandom].ToString();
+        precio2 = precios[objetoRandom];
+        txt_precio2.text = "$" + precio2.ToString();
         ActivarObjetoRandom(4.41f, -2f, 0);
-        txt_precio3.text = precios[objetoRandom].ToString();
-
+        precio3 = precios[objetoRandom];
+        txt_precio3.text = "$" + precio3.ToString();
         randomaSumar = Random.Range(1, 4);
         if (randomaSumar == 1)
         {
-            SumaPrecios = int.Parse(txt_precioASumar.text) + int.Parse(txt_precio1.text);
+            SumaPrecios = precioASumar+precio1;
         }
         else if (randomaSumar == 2)
         {
-            SumaPrecios = int.Parse(txt_precioASumar.text) + int.Parse(txt_precio2.text);
+            SumaPrecios = SumaPrecios = precioASumar + precio2;
         }
         else if(randomaSumar == 3)
         {
-            SumaPrecios = int.Parse(txt_precioASumar.text) + int.Parse(txt_precio3.text);
+            SumaPrecios = SumaPrecios = precioASumar + precio3;
         }
-        txt_suma.text= SumaPrecios.ToString();
+        txt_suma.text= "$"+SumaPrecios.ToString();
     }
 
     // Update is called once per frame
@@ -75,4 +89,79 @@ public class ScriptGeneral : MonoBehaviour
         objetoRandom.SetActive(true);
     }
     
+    public void opcion1()
+    {
+        ObjetoSeleccionado = 1;
+        txt_precio1.fontStyle = FontStyle.Bold;
+        txt_precio2.fontStyle = FontStyle.Normal;
+        txt_precio3.fontStyle = FontStyle.Normal;
+    }
+    public void opcion2()
+    {
+        ObjetoSeleccionado = 2;
+        txt_precio2.fontStyle = FontStyle.Bold;
+        txt_precio1.fontStyle = FontStyle.Normal;
+        txt_precio3.fontStyle = FontStyle.Normal;
+    }
+    public void opcion3()
+    {
+        ObjetoSeleccionado = 3;
+        txt_precio3.fontStyle = FontStyle.Bold;
+        txt_precio2.fontStyle = FontStyle.Normal;
+        txt_precio1.fontStyle = FontStyle.Normal;
+    }
+    public void respuesta()
+    {
+        if (ObjetoSeleccionado == 1)
+        {
+            if (precio1 + precioASumar == SumaPrecios)
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Correcto";
+                txt_btnVolverAJugar.text = "Reiniciar Desafío";
+
+            }
+            else
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Incorrecto";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+            }
+        }
+        else if (ObjetoSeleccionado == 2)
+        {
+            if (precio2 + precioASumar == SumaPrecios)
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Correcto";
+                txt_btnVolverAJugar.text = "Reiniciar Desafío";
+            }
+            else
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Incorrecto";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+            }
+        }
+        else if (ObjetoSeleccionado == 3)
+        {
+            if (precio3 + precioASumar == SumaPrecios)
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Correcto";
+                txt_btnVolverAJugar.text = "Reiniciar Desafío";
+            }
+            else
+            {
+                panelCorrectooIncorrecto.SetActive(true);
+                txt_notificacion.text = "Incorrecto";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+            
+            }
+        }
+        else
+        {
+            panelSeleccionarAlgo.SetActive(true);
+        }
+    }
 }
