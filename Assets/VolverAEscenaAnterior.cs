@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CambiarEscena : MonoBehaviour
+public class VolverAEscenaAnterior : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,11 @@ public class CambiarEscena : MonoBehaviour
     }
     public void cambiarEscena()
     {
-        SceneManager.LoadScene("tp_domiciliario");
+        SceneManager.LoadScene("EscenaInicial");
+    }
+    public void recargarEscena()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
