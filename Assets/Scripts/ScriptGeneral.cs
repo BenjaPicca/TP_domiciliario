@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+
 
 public class ScriptGeneral : MonoBehaviour
 {
@@ -156,12 +158,18 @@ public class ScriptGeneral : MonoBehaviour
                 panelCorrectooIncorrecto.SetActive(true);
                 txt_notificacion.text = "Incorrecto";
                 txt_btnVolverAJugar.text = "Volver a intentar";
-            
+
             }
         }
         else
         {
-            panelSeleccionarAlgo.SetActive(true);
+            activarPanelSeleccionar();
         }
+    }
+    async void activarPanelSeleccionar()
+    {
+        panelSeleccionarAlgo.SetActive(true);
+        await Task.Delay(3000);
+        panelSeleccionarAlgo.SetActive(false);
     }
 }
