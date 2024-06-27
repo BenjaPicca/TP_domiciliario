@@ -33,7 +33,7 @@ public class ScriptGeneral : MonoBehaviour
     {
         panelSeleccionarAlgo.SetActive(false);
         panelCorrectooIncorrecto.SetActive(false);
-        DeactivateAll();
+        //DeactivateAll();
         CrearPrecios();
         ActivarObjetoRandom(-6.4f, 3.31f, 0);
         precioASumar = precios[objetoRandom];
@@ -87,10 +87,10 @@ public class ScriptGeneral : MonoBehaviour
     {
         int randomIndex = Random.Range(0, Objetos.Length);
         objetoRandom = Objetos[randomIndex];
-        objetoRandom.transform.position = new Vector3(x, y, z);
-        objetoRandom.SetActive(true);
+        Vector3 posicion = new Vector3(x, y, z);
+        Instantiate(objetoRandom, posicion, Quaternion.identity);
     }
-    
+
     public void opcion1()
     {
         ObjetoSeleccionado = 1;
